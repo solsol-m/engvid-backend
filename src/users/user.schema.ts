@@ -16,12 +16,6 @@ export class User {
 
     @Prop({ default: '' })
     avatarUrl: string;
-
-    @Prop({ type: [String], default: [] })
-    savedVideos: string[];
-
-    @Prop({ type: [String], default: [] })
-    preferredCategories: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

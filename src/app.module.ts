@@ -4,8 +4,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { VideosModule } from './videos/videos.module';
-import { ProgressModule } from './progress/progress.module';
-import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -22,8 +20,6 @@ import { CommentsModule } from './comments/comments.module';
     AuthModule,
     UsersModule,
     VideosModule,
-    ProgressModule,
-    CommentsModule,
   ],
   controllers: [],
   providers: [],

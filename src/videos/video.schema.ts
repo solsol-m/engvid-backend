@@ -32,12 +32,6 @@ export class Video {
   @Prop({ required: true })
   instructorId: string;
 
-  @Prop({ type: [String], default: [] })
-  likedBy: string[];
-
-  @Prop({ default: 0 })
-  likes: number;
-
   @Prop({ default: 0 })
   views: number;
 }

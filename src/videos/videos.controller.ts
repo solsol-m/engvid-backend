@@ -23,12 +23,6 @@ export class VideosController {
         return this.videosService.findById(id);
     }
 
-    @Post(':id/like')
-    @UseGuards(AuthGuard('jwt'))
-    toggleLike(@Param('id') id: string, @Request() req: any) {
-        return this.videosService.toggleLike(id, req.user.userId);
-    }
-
     @Post('upload')
     @UseGuards(AuthGuard('jwt'))
     @UseInterceptors(FileInterceptor('file', {
@@ -40,5 +34,17 @@ export class VideosController {
         @Request() req: any,
     ) {
         return this.videosService.upload(file, body, req.user.userId);
+    }
+
+    @Post(':id/delete')
+    @UseGuards(AuthGuard('jwt'))
+    delete(@Param('id') id: string, @Request() req: any) {
+        return this.videosService.delete(id, req.user.userId);
+    }
+
+    @Post(':id/update')
+    @UseGuards(AuthGuard('jwt'))
+    update(@Param('id') id: string, @Body() body: any, @Request() req: any) {
+        return this.videosService.update(id, body, req.user.userId);
     }
 }

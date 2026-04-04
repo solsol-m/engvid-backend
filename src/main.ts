@@ -1,12 +1,19 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors(); // allow cross-origin requests
-  app.setGlobalPrefix('api'); // add /api prefix for frontend compatibility
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  await app.listen(process.env.PORT || 4000);
+
+  app.enableCors({ origin: true, credentials: true });
+  app.setGlobalPrefix('api');
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  // أوقفنا عملية التفريغ التلقائي لقاعدة البيانات لضمان عدم ضياع فيديوهاتك المرفوعة
+  // await seedDatabase(videoModel); 
+
+  const port = process.env.PORT ?? 4000;
+  await app.listen(port);
+  console.log(`EngVid backend running on http://localhost:${port}/api`);
 }
 bootstrap();
