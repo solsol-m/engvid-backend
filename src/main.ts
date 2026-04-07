@@ -10,7 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
   // أوقفنا عملية التفريغ التلقائي لقاعدة البيانات لضمان عدم ضياع فيديوهاتك المرفوعة
-  // await seedDatabase(videoModel); 
+  // await seedDatabase(videoModel);
 
   const port = process.env.PORT ?? 4000;
   await app.listen(port);

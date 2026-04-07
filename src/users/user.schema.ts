@@ -5,23 +5,23 @@ export type UserDocument = User & Document;
 
 @Schema({ timestamps: true })
 export class User {
-    @Prop({ required: true, trim: true })
-    name: string;
+  @Prop({ required: true, trim: true })
+  name: string;
 
-    @Prop({ required: true, unique: true, lowercase: true })
-    email: string;
+  @Prop({ required: true, unique: true, lowercase: true })
+  email: string;
 
-    @Prop({ required: true })
-    password: string;
+  @Prop({ required: true })
+  password: string;
 
-    @Prop({ default: '' })
-    avatarUrl: string;
+  @Prop({ default: '' })
+  avatarUrl: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
 UserSchema.set('toJSON', {
-    transform: function (doc, ret) {
-        delete ret.password;
-        return ret;
-    }
+  transform: function (doc, ret) {
+    delete ret.password;
+    return ret;
+  },
 });

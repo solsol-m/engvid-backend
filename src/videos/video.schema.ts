@@ -24,6 +24,9 @@ export class Video {
   videoUrl: string;
 
   @Prop()
+  cloudinaryPublicId?: string;
+
+  @Prop()
   thumbnailUrl: string;
 
   @Prop({ default: 0 })

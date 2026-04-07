@@ -5,8 +5,10 @@ import { VideosService } from './videos.service';
 import { VideosController } from './videos.controller';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: Video.name, schema: VideoSchema }])],
-    providers: [VideosService],
-    controllers: [VideosController],
+  imports: [
+    MongooseModule.forFeature([{ name: Video.name, schema: VideoSchema }]),
+  ],
+  providers: [VideosService],
+  controllers: [VideosController],
 })
-export class VideosModule { }
+export class VideosModule {}
